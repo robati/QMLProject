@@ -6,3 +6,5 @@ morede 1- tarrahie kart haye tasvire grid -- fonte iranSans ro peyda nakardam be
 morede 2 - ezafe shodan dokmehaye taghire vaziat beine grid va list view va namayeshe search
 
 morede 3 - tarahie safheye grid
+
+morede 4 - taghire tedade sotoun ha ba taghire arze safhe

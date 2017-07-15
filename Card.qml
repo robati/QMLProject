@@ -8,6 +8,9 @@ Item {
     property string status:"normal"
     property string name: "اسکای بورن"
     property url pic: "pic.jpg";
+    property var mystate:{"update": "نیازمند بروزرسانی","queue":"درصف","updating":"درحال بروزرسانی","install":"آماده نصب"}
+
+
     Rectangle {
         id: big
         color: "black"
@@ -22,7 +25,7 @@ Item {
         anchors.horizontalCenter: card.horizontalCenter
         anchors.top: card.top
         anchors.topMargin: 5
-        opacity: status=="normal"? 1:0.20                      //////////////////// relevant to statusLabel
+        opacity: status=="normal"? 1:0.20
         Image {
             id: img
             width: parent.width
@@ -47,11 +50,7 @@ Item {
                 visible: status=="normal"? false :true
                 anchors.centerIn: container2
                 color:"#67c1f5"
-                text:if(status=="update")return "نیازمند بروزرسانی";
-                       else if(status=="queue")return "درصف"
-                       else if(status=="updating")return "درحال بروزرسانی"
-                        else if(status=="install")return "آماده نصب"
-
+                text:status=="normal"?"Null":mystate[status]
                 font.family: fixedFont.name
                 font.pointSize: 11
             }

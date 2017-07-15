@@ -4,6 +4,7 @@ import QtGraphicalEffects 1.0
 Item {
     id: myGame
     width:920
+    //onWidthChanged: console.log(width.toString())
     height: 690
     FontLoader { id: fontAwesome;
         source: "fontawesome.ttf"
@@ -21,7 +22,7 @@ Item {
         id: small
         color: "black"
         height: 90
-         width:920
+         width:myGame.width
         anchors.top:parent.top
         opacity: 0.2
         layer.enabled: true
@@ -59,10 +60,11 @@ Item {
         id:grid
         x: 25
         y:167
+        property int count:2
+        anchors.right: parent.right; anchors.rightMargin: 20
+        anchors.left: parent.left; anchors.leftMargin: 20
 
-        rows: 3; columns: 4; spacing: 20
-
-         Card { m:0.3 } //for unknow reason setting the opacity default value makes the first element different
+         Card {id:myCard; m:0.3 } //for unknow reason using the opacity default value makes the first element different
           Card { m:0.3 ;status:"update";name:"اسکای بورن: فلان فلای بیسار..."}
            Card { m:0.3 ;status:"queue"}
             Card { m:0.3 ;status:"install"}
@@ -75,6 +77,10 @@ Item {
                 Card {m:0.3 ;status:"updating" }
                  Card {m:0.3  }
 
+                 spacing:20
+                 columns: (myGame.width-40)/myCard.width
+                 rows: count/grid.columns
+                 columnSpacing:(( myGame.width-40)%myCard.width)/(grid.columns-1)
 
     }
 
