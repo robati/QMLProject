@@ -4,13 +4,15 @@ Item {
     id: card
     width: 204
     height: 137
-    FontLoader { id: fixedFont;
-        source: "0 Roya.ttf"
-    }
+    property double m
+    property string status:"normal"
+    property string name: "اسکای بورن"
+    property url pic: "pic.jpg";
     Rectangle {
         id: big
         color: "black"
         anchors.fill: parent
+        opacity:parent.m// 0.3
     }
 
     Rectangle {
@@ -20,13 +22,13 @@ Item {
         anchors.horizontalCenter: card.horizontalCenter
         anchors.top: card.top
         anchors.topMargin: 5
-        opacity: 0.20                      //////////////////// relevant to statusLabel
+        opacity: status=="normal"? 1:0.20                      //////////////////// relevant to statusLabel
         Image {
             id: img
             width: parent.width
             height: parent.height
             fillMode: Image.PreserveAspectCrop
-            source: "pic.jpg";
+            source: card.pic//
             }
 
         }
@@ -42,9 +44,14 @@ Item {
             Text {
 
                 id: statusLabel
+                visible: status=="normal"? false :true
                 anchors.centerIn: container2
                 color:"#67c1f5"
-                text: "نیازمند بروزرسانی"
+                text:if(status=="update")return "نیازمند بروزرسانی";
+                       else if(status=="queue")return "درصف"
+                       else if(status=="updating")return "درحال بروزرسانی"
+                        else if(status=="install")return "آماده نصب"
+
                 font.family: fixedFont.name
                 font.pointSize: 11
             }
@@ -61,7 +68,7 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 4
                 color:"white"
-                text: " اسکای بورن"
+                text: card.name
                 font.family: fixedFont.name
                 font.pointSize: 14
             }

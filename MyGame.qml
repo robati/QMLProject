@@ -55,6 +55,28 @@ Item {
         y:121
     }
 
+    Grid {
+        id:grid
+        x: 25
+        y:167
+
+        rows: 3; columns: 4; spacing: 20
+
+         Card { m:0.3 } //for unknow reason setting the opacity default value makes the first element different
+          Card { m:0.3 ;status:"update";name:"اسکای بورن: فلان فلای بیسار..."}
+           Card { m:0.3 ;status:"queue"}
+            Card { m:0.3 ;status:"install"}
+             Card {m:0.3 ;status:"updating";name:"فیلان فیلای بیسار ال بل جیمبل" }
+              Card {m:0.3  ;name:"فیلان فیلای بیسار ال بل جیمبل" }
+              Card { m:0.3;status:"queue" }
+               Card {m:0.3  }
+               Card {m:0.3  }
+               Card { m:0.3 ;status:"update"}
+                Card {m:0.3 ;status:"updating" }
+                 Card {m:0.3  }
+
+
+    }
 
 
 

@@ -2,12 +2,13 @@ import QtQuick 2.0
 Item {
     id: container
 
+
     Rectangle{
         id:search
         width:168
         height:21
         color: "#0f2a4b"
-        border { width: 1; color: "white" }
+   //     border { width: 1; color: "white" }
         antialiasing: true
         radius: 10
         Text {
@@ -22,7 +23,7 @@ Item {
             id: textInput
             anchors { right:parent.right;rightMargin: 5}
             width: 160
-            font.family: fixedfont.name
+            font.family: fixedFont.name
             text: "جستجو"
             font.pointSize: 10
             maximumLength: 17
