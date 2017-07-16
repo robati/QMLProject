@@ -1,12 +1,11 @@
-import QtQuick 2.0
+import QtQuick 2.1
 import QtGraphicalEffects 1.0
 import "constant.js" as Global
+import QtQuick.Controls 2.1
 
 Item {
     id: myGame
     width:920
-
-    property bool isGrid: true//false;
     height: 690
     FontLoader { id: fontAwesome;
         source: "content/fontawesome.ttf"
@@ -17,7 +16,7 @@ Item {
 
     Rectangle {
         id: big
-        color: "#0f2a4b"
+        color: Global.DarkBlue
         anchors.fill: parent
 
     }
@@ -32,7 +31,7 @@ Item {
         layer.effect: DropShadow {
              transparentBorder: true
              radius: 10
-             color: "#000000"
+             color: "black"
              verticalOffset: 8
                  }
 
@@ -43,25 +42,29 @@ Item{
     anchors.top:small.bottom
     height: 77
     width:parent.width
-  Button{
-      id:gridButton
 
+  GButton{
+      id:gridButton
       text:""
       x:25
       y:31
       function clicked(){
-          myCard.showGrid()
-               console.log("g")
+          grid.visible=true;
+          list.visible=false;
+          listButton.selected=false
+
       }
   }
-  Button{
+  GButton{
+      selected: true
       id:listButton
       text:""
       x:50
       y:31
       function clicked(){
-          myCard.showList()
-          console.log("list")
+          list.visible=true;
+          grid.visible=false;
+           gridButton.selected=false
       }
   }
     Search{
@@ -75,14 +78,17 @@ Item{
 
     Item {
         id:cardView
-        anchors.top:select.bottom
         width: parent.width
         height: 520
         anchors{
+            top:select.bottom
             right: parent.right;rightMargin: 0;
-            left:parent.left;leftMargin:10}
+            left:parent.left;leftMargin:10
+
+        }
 
         GridView{
+             visible: false
             id: grid
             anchors.fill: parent
 
@@ -96,7 +102,17 @@ Item{
             delegate:Card{}
 
             }
-      }
+
+        ListView {
+            id:list
+            anchors.fill: parent
+            ScrollBar.vertical:ScrollBar { }
+            spacing:10
+            model: CardModel{}
+            delegate: ListCard{}
+            }
+    }
+
 }
 
 

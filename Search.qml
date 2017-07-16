@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "constant.js" as Global
 Item {
     id: container
 
@@ -7,7 +8,7 @@ Item {
         id:search
         width:168
         height:21
-        color: "#0f2a4b"
+        color: Global.DarkBlue
         antialiasing: true
         radius: 10
         Text {
@@ -15,7 +16,7 @@ Item {
             text: ""
             font.family: fontAwesome.name
             font.pointSize: 10
-            color: "#7da4b9"
+            color: Global.LightBlue
         }
 
         TextInput {
@@ -26,7 +27,7 @@ Item {
             text: "جستجو"
             font.pointSize: 10
             maximumLength: 17
-            color: "#7da4b9"
+            color: Global.LightBlue
              opacity: 0.54
         }
 
@@ -37,7 +38,7 @@ Item {
         y:search.y
         width:search.width
         height:search.height
-        color: "#e0e0e0"
+        color: Global.Gray
         opacity: 0.1
         antialiasing: true
         radius: 10}

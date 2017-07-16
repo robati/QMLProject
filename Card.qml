@@ -13,6 +13,7 @@ Item {
         color: "black"
         anchors.fill: parent
         opacity:0.3
+        radius: 2
     }
 
     Rectangle {
@@ -22,7 +23,7 @@ Item {
         anchors.horizontalCenter:card.horizontalCenter
         anchors.top: card.top
         anchors.topMargin: 5
-
+        radius: 2
         opacity: status=="normal"? 1:0.20
 
         Image {
@@ -48,7 +49,7 @@ Item {
                 id: statusLabel
                 visible: status=="normal"? false :true
                 anchors.centerIn: container2
-                color:"#67c1f5"
+                color:Global.Blue
                 text:status=="normal"?"Null":mystate[status]
                 font.family: fixedFont.name
                 font.pointSize: 11
