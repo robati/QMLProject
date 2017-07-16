@@ -8,7 +8,6 @@ Item {
         width:168
         height:21
         color: "#0f2a4b"
-   //     border { width: 1; color: "white" }
         antialiasing: true
         radius: 10
         Text {

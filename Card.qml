@@ -1,13 +1,10 @@
 import QtQuick 2.1
-
+import "constant.js" as Global
 Item {
     id: card
-    width: 204
-    height: 137
-    property double m
-    property string status:"normal"
-    property string name: "اسکای بورن"
-    property url pic: "pic.jpg";
+    width: Global.card_width
+    height: Global.card_height
+    property url pic: "content/pic.jpg";
     property var mystate:{"update": "نیازمند بروزرسانی","queue":"درصف","updating":"درحال بروزرسانی","install":"آماده نصب"}
 
 
@@ -15,17 +12,19 @@ Item {
         id: big
         color: "black"
         anchors.fill: parent
-        opacity:parent.m// 0.3
+        opacity:0.3
     }
 
     Rectangle {
         id: container
         width: 196
         height: 97
-        anchors.horizontalCenter: card.horizontalCenter
+        anchors.horizontalCenter:card.horizontalCenter
         anchors.top: card.top
         anchors.topMargin: 5
+
         opacity: status=="normal"? 1:0.20
+
         Image {
             id: img
             width: parent.width
@@ -67,7 +66,7 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 4
                 color:"white"
-                text: card.name
+                text: name
                 font.family: fixedFont.name
                 font.pointSize: 14
             }

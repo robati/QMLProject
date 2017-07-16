@@ -1,17 +1,20 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
+import "constant.js" as Global
 
 Item {
     id: myGame
     width:920
-    //onWidthChanged: console.log(width.toString())
+
+    property bool isGrid: true//false;
     height: 690
     FontLoader { id: fontAwesome;
-        source: "fontawesome.ttf"
+        source: "content/fontawesome.ttf"
     }
     FontLoader { id: fixedFont;
-        source: "0 Roya.ttf"
+        source: "content/0 Roya.ttf"
     }
+
     Rectangle {
         id: big
         color: "#0f2a4b"
@@ -29,61 +32,71 @@ Item {
         layer.effect: DropShadow {
              transparentBorder: true
              radius: 10
-          //   spread: 0.5
              color: "#000000"
-            // horizontalOffset: 8
              verticalOffset: 8
                  }
-        //anchors.fill: parent
+
     }
 
-
+Item{
+    id:select
+    anchors.top:small.bottom
+    height: 77
+    width:parent.width
   Button{
       id:gridButton
+
       text:""
       x:25
-      y:121
+      y:31
+      function clicked(){
+          myCard.showGrid()
+               console.log("g")
+      }
   }
   Button{
       id:listButton
       text:""
       x:50
-      y:121
+      y:31
+      function clicked(){
+          myCard.showList()
+          console.log("list")
+      }
   }
     Search{
         id:searchArea
         x:92
-        y:121
+        y:31
     }
-
-    Grid {
-        id:grid
-        x: 25
-        y:167
-        property int count:2
-        anchors.right: parent.right; anchors.rightMargin: 20
-        anchors.left: parent.left; anchors.leftMargin: 20
-
-         Card {id:myCard; m:0.3 } //for unknow reason using the opacity default value makes the first element different
-          Card { m:0.3 ;status:"update";name:"اسکای بورن: فلان فلای بیسار..."}
-           Card { m:0.3 ;status:"queue"}
-            Card { m:0.3 ;status:"install"}
-             Card {m:0.3 ;status:"updating";name:"فیلان فیلای بیسار ال بل جیمبل" }
-              Card {m:0.3  ;name:"فیلان فیلای بیسار ال بل جیمبل" }
-              Card { m:0.3;status:"queue" }
-               Card {m:0.3  }
-               Card {m:0.3  }
-               Card { m:0.3 ;status:"update"}
-                Card {m:0.3 ;status:"updating" }
-                 Card {m:0.3  }
-
-                 spacing:20
-                 columns: (myGame.width-40)/myCard.width
-                 rows: count/grid.columns
-                 columnSpacing:(( myGame.width-40)%myCard.width)/(grid.columns-1)
-
-    }
-
-
 
 }
+
+
+    Item {
+        id:cardView
+        anchors.top:select.bottom
+        width: parent.width
+        height: 520
+        anchors{
+            right: parent.right;rightMargin: 0;
+            left:parent.left;leftMargin:10}
+
+        GridView{
+            id: grid
+            anchors.fill: parent
+
+            property int column: ((myGame.width-10)/Global.card_width)
+            property real space:  (( myGame.width-10)%Global.card_width)/column
+
+            cellWidth:Global.card_width+space
+            cellHeight: Global.card_height+20
+
+            model:CardModel{}
+            delegate:Card{}
+
+            }
+      }
+}
+
+
