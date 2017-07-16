@@ -1,7 +1,7 @@
 import QtQuick 2.1
 import "constant.js" as Global
-import QtGraphicalEffects 1.0
-Item {
+
+ MouseArea {
     id: card
     width: parent.width//865
     height: 121
@@ -12,22 +12,53 @@ Item {
     anchors.rightMargin: 20
     anchors.left: parent.left;
     anchors.leftMargin: 10
+    property bool held: false
 
-    Rectangle {
-        id: big
-        color: "black"
-        anchors.fill: parent
-        opacity:0.3
-        radius: 2
+        drag.target: held ? wrapper : undefined
+        drag.axis: Drag.YAxis
+
+        onPressAndHold: held = true
+        onReleased: held = false
+
+Rectangle{
+
+    id:wrapper
+    width: card.width; height: card.height
+    Drag.active: card.held
+    Drag.source: card
+    Drag.hotSpot.x: width / 2
+    Drag.hotSpot.y: height / 2
+
+
+
+    color: card.held ? Global.LightBlue : "transparent"
+    Behavior on color { ColorAnimation { duration: 100 } }
+
+    states: State {
+        when: card.held
+
+        ParentChange { target: wrapper; parent:card }
+        AnchorChanges {
+            target: wrapper
+            anchors { horizontalCenter: undefined; verticalCenter: undefined }
+        }
     }
+Rectangle{
+    id:content
+  //  id: big
+    color: "black"
+    anchors.fill: parent
+    opacity:0.3
+    radius: 2}
+
 
     Rectangle {
         id: container
         width: 213
         height: 106
-        anchors.right:card.right
+        anchors.right:content.right
         anchors.rightMargin: 7
-        anchors.top: card.top
+        anchors.top: content.top
         anchors.topMargin: 7
         radius: 2
 
@@ -49,9 +80,9 @@ Item {
             id: container2 // used to apply opacity only to image
             width: container.width
             height: container.height
-            anchors.right:card.right
+            anchors.right:content.right
             anchors.rightMargin: 7
-            anchors.top: card.top
+            anchors.top: content.top
             anchors.topMargin: 7
 
             Text {
@@ -72,7 +103,7 @@ Item {
             width:card.width-container.width
             height: card.height
 
-            anchors {top:card.top ; right: container.left;rightMargin: 5;}
+            anchors {top:content.top ; right: container.left;rightMargin: 5;}
 
             Text {
 
@@ -150,5 +181,6 @@ Item {
             font.pointSize: 11
             opacity: 0.5
         }
+}
 
 }

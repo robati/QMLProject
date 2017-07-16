@@ -10,3 +10,5 @@ morede 3 - tarahie safheye grid
 morede 4 - taghire tedade sotoun ha ba taghire arze safhe
 
 morede 5 - namayeshe kart ha be soorate list
+
+morede 6 - emkane drag and drop dar listView

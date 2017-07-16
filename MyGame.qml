@@ -2,6 +2,7 @@ import QtQuick 2.1
 import QtGraphicalEffects 1.0
 import "constant.js" as Global
 import QtQuick.Controls 2.1
+import QtQml.Models 2.1
 
 Item {
     id: myGame
@@ -108,10 +109,33 @@ Item{
             anchors.fill: parent
             ScrollBar.vertical:ScrollBar { }
             spacing:10
-            model: CardModel{}
-            delegate: ListCard{}
+            model: visualModel
+
             }
+        DelegateModel {
+            id: visualModel
+
+            model: CardModel {}
+            delegate:  ListCard{id: card
+                DropArea {
+                    anchors { fill: parent; margins: 10 }
+
+                   onEntered: {
+                     visualModel.items.move(
+                         drag.source.DelegateModel.itemsIndex,
+                         card.DelegateModel.itemsIndex)
+            }
+
+
+            }
+
+
+
+            }
+        }
+
     }
+
 
 }
 
