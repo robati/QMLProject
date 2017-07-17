@@ -66,12 +66,15 @@ Item{
           list.visible=true;
           grid.visible=false;
            gridButton.selected=false
+
+
       }
   }
     Search{
         id:searchArea
         x:92
         y:31
+
     }
 
 }
@@ -111,6 +114,7 @@ Item{
             spacing:10
             model: visualModel
 
+
             }
         DelegateModel {
             id: visualModel
@@ -123,20 +127,17 @@ Item{
                    onEntered: {
                      visualModel.items.move(
                          drag.source.DelegateModel.itemsIndex,
-                         card.DelegateModel.itemsIndex)
-            }
+                         card.DelegateModel.itemsIndex) }
+                    }
+                }
+
+            }//visualModel
 
 
-            }
-
-
-
-            }
-        }
-
-    }
-
-
+        }//cardView
 }
+
+
+
 
 

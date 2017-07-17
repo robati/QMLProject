@@ -3,53 +3,53 @@ import QtQuick 2.0
 ListModel {
     ListElement {
         status:"update"
-        name:"اسکای بورن"
+        name:"0sky born"
     }
     ListElement {
         status:"updating"
-        name:"اسکای بورن"
+        name:"1اسکای بورن"
     }
     ListElement {
          status:"normal"
-         name:"اسکای بورن: فلان فلای بیسار..."
+         name:"اسکای بورن: فلان فلای بیسار1..."
     }
     ListElement {
         status: "queue"
-        name:"اسکای بورن"
+        name:"اسکای بورن2"
     }
     ListElement {
       status:"update"
-      name:"اسکای بورن: فلان فلای بیسار..."
+      name:"4اسکای بورن: فلان فلای بیسار..."
     }
     ListElement {
         status:"queue"
-        name:"اسکای بورن"
+        name:"3اسکای بورن"
     }
     ListElement {
         status:"install"
-        name:"اسکای بورن"
+        name:"5اسکای بورن"
     }
     ListElement {
         status:"updating"
-        name:"فیلان فیلای بیسار ال بل جیمبل"
+        name:"6فیلان فیلای بیسار ال بل جیمبل"
 
     }
     ListElement {
         status:"queue"
-        name:"اسکای بورن"
+        name:"اسکای بورن7"
     }
     ListElement {
         status:"normal"
-        name:"اسکای بورن"
+        name:"8اسکای بورن"
     }
     ListElement {
          status:"normal"
-         name:"فیلان فیلای بیسار ال بل جیمبل"
+         name:"9فیلان فیلای بیسار ال بل جیمبل"
     }
 
 
     ListElement {
         status:"updating"
-        name:"فیلان فیلای بیسار ال بل جیمبل"
+        name:"10فیلان فیلای بیسار ال بل جیمبل"
     }
 }
