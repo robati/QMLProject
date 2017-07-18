@@ -4,7 +4,6 @@ Item {
     id: card
     width: Global.card_width
     height: Global.card_height
-    property url pic: "content/pic.jpg";
     property var mystate:{"update": "نیازمند بروزرسانی","queue":"درصف","updating":"درحال بروزرسانی","install":"آماده نصب"}
 
 
@@ -31,7 +30,7 @@ Item {
             width: parent.width
             height: parent.height
             fillMode: Image.PreserveAspectCrop
-            source: card.pic//
+            source: pic
             }
 
         }

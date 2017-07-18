@@ -14,3 +14,5 @@ morede 5 - namayeshe kart ha be soorate list
 morede 6 - emkane drag and drop dar listView
 
 morede 7 - filtere jostoju
+
+morede 8 - emkane morattab kardane kart ha bar asase zaman va alefba

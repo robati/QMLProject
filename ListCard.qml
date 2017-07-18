@@ -5,7 +5,6 @@ import "constant.js" as Global
     id: card
     width: parent.width//865
     height: 121
-    property url pic: "content/pic.jpg";
     property var mystate:{"update": "نیازمند بروزرسانی","queue":"درصف","updating":"درحال بروزرسانی","install":"آماده نصب"}
     property var myaction:{"normal":"اجرا","update": "بروزرسانی","queue":"توقف","updating":"توقف","install":"نصب"}
     anchors.right: parent.right;
@@ -17,7 +16,7 @@ import "constant.js" as Global
         drag.target: held ? wrapper : undefined
         drag.axis: Drag.YAxis
 
-        onPressAndHold: held = true
+        onPressAndHold: held = true;
         onReleased: held = false
 
 Rectangle{
@@ -71,7 +70,7 @@ Rectangle{
             width: parent.width
             height: parent.height
             fillMode: Image.PreserveAspectCrop
-            source: card.pic
+            source: pic
             }
 
         }
@@ -176,7 +175,7 @@ Rectangle{
            anchors.left: parent.left;
            anchors.leftMargin: 5
             color:"white"
-            text: "آخرین بار 7 روز پیش بازی شده"
+            text: "آخرین بار "+day+" روز پیش بازی شده"
             font.family: fixedFont.name
             font.pointSize: 11
             opacity: 0.5

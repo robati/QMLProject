@@ -3,53 +3,76 @@ import QtQuick 2.0
 ListModel {
     ListElement {
         status:"update"
-        name:"0sky born"
+        name:"جعبه موسیقی"
+        day:5
+        pic:"content/melodia.jpg";
     }
     ListElement {
         status:"updating"
-        name:"1اسکای بورن"
+        name:"کاکتوس"
+        day:7
+        pic:"content/pic.jpg";
     }
     ListElement {
          status:"normal"
-         name:"اسکای بورن: فلان فلای بیسار1..."
+         name:"اسکای بورن"
+         day:9
+         pic:"content/pic.jpg";
     }
     ListElement {
         status: "queue"
-        name:"اسکای بورن2"
+        name:"الف-اسکای بورن2"
+        day:1
+        pic:"content/pic.jpg";
     }
     ListElement {
       status:"update"
-      name:"4اسکای بورن: فلان فلای بیسار..."
+      name:"اسکای بورن: فلان فلای بیسار..."
+      day:2
+      pic:"content/pic.jpg";
     }
     ListElement {
         status:"queue"
-        name:"3اسکای بورن"
+        name:"ب-اسکای بورن"
+        day:58
+        pic:"content/pic.jpg";
     }
     ListElement {
         status:"install"
-        name:"5اسکای بورن"
+        name:"ه-اسکای بورن"
+        day:96
+        pic:"content/pic.jpg";
     }
     ListElement {
         status:"updating"
-        name:"6فیلان فیلای بیسار ال بل جیمبل"
-
+        name:"ی-فیلان فیلای بیسار ال بل جیمبل"
+        day:25
+        pic:"content/pic.jpg";
     }
     ListElement {
         status:"queue"
-        name:"اسکای بورن7"
+        name:"ی-اسکای بورن"
+        day:9
+        pic:"content/pic.jpg";
     }
     ListElement {
         status:"normal"
-        name:"8اسکای بورن"
+        name:"جعبه موسیقی"
+        day:15
+        pic:"content/melodia.jpg";
     }
     ListElement {
          status:"normal"
-         name:"9فیلان فیلای بیسار ال بل جیمبل"
+         name:"م-فیلان فیلای بیسار ال بل جیمبل"
+         day:14
+         pic:"content/pic.jpg";
     }
 
 
     ListElement {
         status:"updating"
-        name:"10فیلان فیلای بیسار ال بل جیمبل"
+        name:"ا-جعبه موسیقی"
+        day:12
+        pic:"content/melodia.jpg";
     }
 }

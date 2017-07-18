@@ -15,7 +15,7 @@ Rectangle {
         id:icon
         text:container.text
         font.family: fontAwesome.name
-        font.pointSize: 13
+        font.pointSize: 12
         color:selected?Global.buttonSelected: Global.ButtonNotSelected
 
     }
