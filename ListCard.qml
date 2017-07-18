@@ -1,19 +1,27 @@
 import QtQuick 2.1
+import QtQml.Models 2.1
 import "constant.js" as Global
-
+//list view cards and delegatemodel
+DelegateModel {
+    id: visualModel
+    model: CardModel {}
+    delegate:
  MouseArea {
     id: card
-    width: parent.width//865
+    width: 865
     height: 121
     property var mystate:{"update": "نیازمند بروزرسانی","queue":"درصف","updating":"درحال بروزرسانی","install":"آماده نصب"}
     property var myaction:{"normal":"اجرا","update": "بروزرسانی","queue":"توقف","updating":"توقف","install":"نصب"}
-    anchors.right: parent.right;
-    anchors.rightMargin: 20
-    anchors.left: parent.left;
-    anchors.leftMargin: 10
     property bool held: false
 
-        drag.target: held ? wrapper : undefined
+    anchors{right: parent.right;
+            rightMargin: 20
+            left: parent.left;
+            leftMargin: 10}
+
+
+
+        drag.target: held ? wrapper : undefined    //drag and drop
         drag.axis: Drag.YAxis
 
         onPressAndHold: held = true;
@@ -23,12 +31,15 @@ Rectangle{
 
     id:wrapper
     width: card.width; height: card.height
-    Drag.active: card.held
+    anchors {
+        horizontalCenter: parent.horizontalCenter;
+        verticalCenter: parent.verticalCenter
+    }
+
+    Drag.active: card.held                      //drag and drop
     Drag.source: card
     Drag.hotSpot.x: width / 2
     Drag.hotSpot.y: height / 2
-
-
 
     color: card.held ? Global.LightBlue : "transparent"
     Behavior on color { ColorAnimation { duration: 100 } }
@@ -36,15 +47,15 @@ Rectangle{
     states: State {
         when: card.held
 
-        ParentChange { target: wrapper; parent:card }
+        ParentChange { target: wrapper; parent:list }
         AnchorChanges {
             target: wrapper
             anchors { horizontalCenter: undefined; verticalCenter: undefined }
         }
     }
-Rectangle{
+
+Rectangle{ //card background
     id:content
-  //  id: big
     color: "black"
     anchors.fill: parent
     opacity:0.3
@@ -137,16 +148,29 @@ Rectangle{
                     font.family: fixedFont.name
                     font.pointSize: 12
                     color:Global.friends
-                    anchors.right: parent.right
-                    anchors.rightMargin: 10
-                    anchors.bottom: parent.bottom
-                    anchors.bottomMargin: 10}
-                     Friend{id:f1;anchors.right: friends.left;anchors.rightMargin: 40;anchors.bottom: friends.bottom;anchors.bottomMargin: 30 }
-                     Friend{id:f2;anchors.right: f1.left;anchors.rightMargin: 40;anchors.bottom: friends.bottom;anchors.bottomMargin: 30 }
-                     Friend{id:f3;anchors.right: f2.left;anchors.rightMargin: 40;anchors.bottom: friends.bottom;anchors.bottomMargin: 30 }
-                     Friend{id:f4;anchors.right: f3.left;anchors.rightMargin: 40;anchors.bottom: friends.bottom;anchors.bottomMargin: 30 }
-                     Friend{anchors.right: f4.left;anchors.rightMargin: 40;anchors.bottom: friends.bottom;anchors.bottomMargin: 30 }
+                    anchors{right: parent.right
+                    rightMargin: 10
+                    bottom: parent.bottom
+                    bottomMargin: 10}}
+
+
+                    Row {
+                        anchors{
+                            right:friends.left
+                            rightMargin: 30
+                            bottom: parent.bottom
+                            bottomMargin: -10}
+
+                        width: 150; height: 50
+                        spacing: 5
+                        Friend {  width: 30; height: 10 }
+                        Friend {  width: 30; height: 10 }
+                        Friend {  width: 30; height: 10 }
+                        Friend {  width: 30; height: 10 }
+                        Friend {  width: 30; height: 10 }
                     }
+
+        }
 
 
 
@@ -179,7 +203,17 @@ Rectangle{
             font.family: fixedFont.name
             font.pointSize: 11
             opacity: 0.5
-        }
+        }//labelContainer
 }
+        DropArea {    //drag and drop
+            anchors { fill: parent; margins: 10 }
 
+           onEntered: {
+             visualModel.items.move(drag.source.DelegateModel.itemsIndex,
+                 card.DelegateModel.itemsIndex) }
+            }
+
+
+
+    }
 }

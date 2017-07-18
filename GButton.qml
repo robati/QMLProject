@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import "constant.js" as Global
-
+// grid and list view buttons
 Rectangle {
     id: container
     property string text

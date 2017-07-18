@@ -9,8 +9,8 @@ Item{
         id:sortTop
         anchors{
             top:parent.top
-            left:parent.left
-        }
+            left:parent.left}
+
         height:sortType.height
         width:sortType.width+sortIcon.width+10
 
@@ -30,13 +30,14 @@ Item{
         }
 
     Text {
+        id: sortIcon
         anchors{
             left: parent.left;
             leftMargin: 0
             top:parent.top
             topMargin: 5
              }
-        id: sortIcon
+
         text: ""
             font.family: fontAwesome.name
             font.pointSize: 12
@@ -45,7 +46,7 @@ Item{
     MouseArea{
         anchors.fill: parent
         onClicked:Methods.togglePopUp();
-    }
+            }
     }
 
     Rectangle{
@@ -68,19 +69,17 @@ Item{
             color:Global.DarkBlue
             anchors{
                 left: parent.left
-                leftMargin: 10
-
-            }
+                leftMargin: 10}
 
             text:"به ترتیب زمان"
             MouseArea{
                 anchors.fill: parent
                 onClicked: {Methods.swapText();Methods.togglePopUp();Methods.sort(sortType.text)}
             }
-        }
+        } //sortList
 
 
-    }
+    }//sortPopUp
 
 
     }

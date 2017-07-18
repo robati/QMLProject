@@ -22,30 +22,30 @@ Item {
 
     }
     Rectangle {
-        z:10
         id: small //top
-        color: "black"
+        color: "#0a1b30"
         height: 90
-         width:myGame.width
+        width:myGame.width
         anchors.top:parent.top
-        opacity: 0.2
+
+        z:10                    //DropShadow
         layer.enabled: true
         layer.effect: DropShadow {
              transparentBorder: true
              radius: 10
-             color: "black"
+             color: "#060f1a"
              verticalOffset: 8
                  }
 
     }
 
-Rectangle{
+Rectangle{    
     id:middle
+    z:5                     //DropShadow
     color: Global.DarkBlue
     height: 77
     width:parent.width
-    anchors{left:parent.left;leftMargin:10;top:small.bottom;topMargin: 15}
-    z:5
+    anchors{left:parent.left;leftMargin:10;top:small.bottom;topMargin: 0}
 
 
 Item{
@@ -113,7 +113,6 @@ Item{
 
 
     Item {
-
         id:cardView
         width: parent.width
         height: 520
@@ -125,7 +124,7 @@ Item{
         }
 
         GridView{
-             visible: false
+            visible: false
             id: grid
             anchors.fill: parent
 
@@ -141,37 +140,22 @@ Item{
             }
 
         ListView {
-            z:4
             id:list
+            z:4
             anchors.fill: parent
             ScrollBar.vertical:ScrollBar { }
             spacing:10
-            model: visualModel
+            model: ListCard{id: visualModel}
 
-
+            displaced: Transition {
+                NumberAnimation { properties: "x,y"; easing.type: Easing.OutQuad }
             }
-        DelegateModel {
-            id: visualModel
+            add: Transition {
+                NumberAnimation { properties: "x,y"; easing.type: Easing.Linear}
+            }
+           }
 
-            model: CardModel {}
-            delegate:  ListCard{id: card
-                DropArea {
-                    anchors { fill: parent; margins: 10 }
-
-                   onEntered: {
-                     visualModel.items.move(
-                         drag.source.DelegateModel.itemsIndex,
-                         card.DelegateModel.itemsIndex) }
-                    }
-                }
-
-            }//visualModel
-
-
-        }//cardView
-}
-
-
-
+     }//cardView
+ }
 
 

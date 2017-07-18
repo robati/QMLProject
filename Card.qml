@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import "constant.js" as Global
+//for GridView
 Item {
     id: card
     width: Global.card_width
